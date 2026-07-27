@@ -1,0 +1,32 @@
+---
+description: Git workflow
+alwaysApply: true
+---
+
+# Git
+
+Follow Conventional Commits.
+
+Examples
+
+feat:
+
+fix:
+
+refactor:
+
+docs:
+
+test:
+
+build:
+
+chore:
+
+Keep commits focused.
+
+Avoid unrelated changes in the same commit.
+
+Never commit generated artifacts unless required.
+
+Never commit secrets.

@@ -1,0 +1,26 @@
+---
+description: Database rules
+alwaysApply: true
+---
+
+# Database
+
+Use PostgreSQL.
+
+Prefer normalization.
+
+Avoid premature denormalization.
+
+Indexes should be created only when justified.
+
+Never use SELECT *.
+
+Use migrations.
+
+Foreign keys are required unless documented otherwise.
+
+Soft delete only where explicitly required.
+
+Keep transactions short.
+
+Avoid N+1 query patterns.

@@ -1,0 +1,21 @@
+---
+description: Documentation standards
+alwaysApply: true
+---
+
+# Documentation
+
+Keep documentation synchronized with implementation.
+
+Update documentation whenever:
+
+- API changes
+- Database changes
+- Architecture changes
+- Configuration changes
+
+Public classes should include meaningful docstrings.
+
+Explain "why" rather than "what."
+
+Avoid redundant comments.

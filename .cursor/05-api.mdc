@@ -1,0 +1,46 @@
+---
+description: API conventions
+alwaysApply: true
+---
+
+# API Standards
+
+Use REST.
+
+Version APIs.
+
+Example
+
+/api/v1/
+
+Use plural resource names.
+
+Examples
+
+/users
+
+/categories
+
+/challenges
+
+HTTP methods
+
+GET
+
+POST
+
+PUT
+
+PATCH
+
+DELETE
+
+Return proper HTTP status codes.
+
+Validate every request.
+
+Document endpoints.
+
+Never expose internal implementation details.
+
+API responses should remain consistent.

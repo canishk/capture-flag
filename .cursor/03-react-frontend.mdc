@@ -1,0 +1,32 @@
+---
+description: Frontend rules
+globs:
+  - frontend/**
+---
+
+# Frontend Rules
+
+Technology
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+
+Prefer functional components.
+
+Avoid class components.
+
+Use strict typing.
+
+Keep components small.
+
+Business logic belongs in hooks or services.
+
+Avoid deeply nested JSX.
+
+Pages should orchestrate.
+
+Components should render.
+
+Never duplicate UI logic.

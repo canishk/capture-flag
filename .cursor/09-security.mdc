@@ -1,0 +1,26 @@
+---
+description: Security rules
+alwaysApply: true
+---
+
+# Security
+
+Validate all user input.
+
+Escape output where appropriate.
+
+Use parameterized database queries.
+
+Never expose stack traces to users.
+
+Do not log secrets.
+
+Use least privilege.
+
+Store secrets in environment variables.
+
+Assume all external input is untrusted.
+
+Prefer secure defaults.
+
+Security is a feature, not an afterthought.

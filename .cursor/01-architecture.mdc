@@ -1,0 +1,54 @@
+---
+description: Architecture rules
+alwaysApply: true
+---
+
+# Architecture
+
+CipherForge follows a Modular Monolith architecture.
+
+Modules are independent.
+
+Each module owns:
+
+- router
+- service
+- repository
+- schemas
+- models
+
+Dependency flow:
+
+Router
+
+↓
+
+Service
+
+↓
+
+Repository
+
+↓
+
+Database
+
+Never violate this dependency order.
+
+## Business Logic
+
+Business logic belongs only in services.
+
+Never place business logic inside:
+
+- Routers
+- SQLAlchemy models
+- Database migrations
+
+Repositories only perform persistence operations.
+
+Routers only translate HTTP requests into service calls.
+
+Shared functionality belongs in common modules.
+
+Avoid circular dependencies.

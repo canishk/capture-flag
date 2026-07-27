@@ -1,0 +1,54 @@
+---
+description: Backend coding rules
+globs:
+  - backend/**
+---
+
+# Backend Rules
+
+Technology
+
+- Python 3.13
+- FastAPI
+- SQLAlchemy 2.x
+- Pydantic v2
+
+## Style
+
+Use:
+
+- Type hints everywhere
+- Dataclasses when appropriate
+- Dependency Injection
+- Async APIs where beneficial
+
+Functions should have a single responsibility.
+
+Prefer small focused classes.
+
+Avoid utility classes containing unrelated methods.
+
+## Logging
+
+Use structured logging.
+
+Never use print().
+
+## Exceptions
+
+Raise domain-specific exceptions.
+
+Do not swallow exceptions.
+
+Avoid generic Exception.
+
+## Configuration
+
+Never hardcode:
+
+- URLs
+- Secrets
+- Tokens
+- Credentials
+
+Everything comes from configuration.

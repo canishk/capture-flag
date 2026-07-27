@@ -1,0 +1,24 @@
+---
+description: How Cursor should work on tasks
+alwaysApply: true
+---
+
+# Workflow
+
+Before implementing any feature:
+
+1. Read the relevant documentation in the docs/ directory.
+2. Review the existing implementation.
+3. Explain the implementation plan if the task is complex.
+4. Keep changes limited to files directly related to the task.
+5. Preserve existing behavior unless the task explicitly changes it.
+
+When a task is complete:
+
+- Verify the code compiles.
+- Verify formatting and linting pass.
+- Verify tests still pass (or add/update tests where appropriate).
+- Summarize:
+  - Files changed
+  - Architectural impact
+  - Any follow-up work
