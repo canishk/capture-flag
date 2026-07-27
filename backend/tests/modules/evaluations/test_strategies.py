@@ -1,4 +1,3 @@
-import pytest
 
 from app.modules.evaluations.domain.strategies import EvaluationStrategyRegistry
 

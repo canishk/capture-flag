@@ -18,7 +18,11 @@ from app.modules.resources.schemas.responses import ResourceResponse
 from app.shared.database.dependencies import DbSession
 from app.shared.exceptions.base import NotFoundError, ValidationAppError
 from app.shared.schemas.response import PaginatedResponse, PaginationMeta, SuccessResponse
-from app.shared.security.dependencies import CurrentUserContext, get_optional_current_user, require_admin
+from app.shared.security.dependencies import (
+    CurrentUserContext,
+    get_optional_current_user,
+    require_admin,
+)
 
 router = APIRouter(prefix="/resources", tags=["Resources"])
 

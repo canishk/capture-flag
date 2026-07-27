@@ -9,6 +9,7 @@ from app.modules.evaluations.domain import events as evaluation_events
 from app.modules.evaluations.domain.enums import EvaluationStatus, EvaluationStrategyType
 from app.modules.evaluations.domain.exceptions import (
     EvaluationConfigurationError,
+    EvaluationNotFoundError,
     UnsupportedEvaluationStrategyError,
 )
 from app.modules.evaluations.domain.interfaces import EvaluationRepositoryProtocol
@@ -16,7 +17,6 @@ from app.modules.evaluations.domain.strategies import EvaluationStrategyRegistry
 from app.modules.evaluations.infrastructure.repository import EvaluationRepository
 from app.modules.submissions.application.submission_service import SubmissionService
 from app.modules.submissions.domain.enums import SubmissionStatus
-from app.modules.evaluations.domain.exceptions import EvaluationNotFoundError
 from app.shared.audit.service import AuditService
 from app.shared.events.dispatcher import EventDispatcher, get_event_dispatcher
 

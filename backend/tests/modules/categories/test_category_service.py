@@ -1,5 +1,6 @@
-import pytest
 from uuid import uuid4
+
+import pytest
 
 from app.modules.categories.application.category_service import CategoryService
 from app.modules.categories.domain.enums import CategoryStatus

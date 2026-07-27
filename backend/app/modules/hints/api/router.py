@@ -9,12 +9,20 @@ from app.modules.hints.domain.exceptions import (
     HintNotFoundError,
     InvalidHintConfigurationError,
 )
-from app.modules.hints.schemas.requests import CreateHintRequest, ReorderHintRequest, UpdateHintRequest
+from app.modules.hints.schemas.requests import (
+    CreateHintRequest,
+    ReorderHintRequest,
+    UpdateHintRequest,
+)
 from app.modules.hints.schemas.responses import HintResponse
 from app.shared.database.dependencies import DbSession
 from app.shared.exceptions.base import ConflictError, NotFoundError, ValidationAppError
 from app.shared.schemas.response import PaginatedResponse, PaginationMeta, SuccessResponse
-from app.shared.security.dependencies import CurrentUserContext, get_optional_current_user, require_admin
+from app.shared.security.dependencies import (
+    CurrentUserContext,
+    get_optional_current_user,
+    require_admin,
+)
 
 router = APIRouter(prefix="/hints", tags=["Hints"])
 
