@@ -3,13 +3,32 @@ from uuid import UUID
 from app.shared.events.dispatcher import DomainEvent
 
 
-def progress_updated(user_id: UUID) -> DomainEvent:
+def progress_updated(
+    user_id: UUID,
+    *,
+    total_xp: int,
+    challenges_completed: int,
+    challenges_attempted: int,
+    levels_completed: int,
+    categories_completed: int,
+    last_active_challenge_id: UUID | None,
+) -> DomainEvent:
     return DomainEvent(
         event_type="ProgressUpdated",
         publisher="progress",
         aggregate_id=user_id,
         aggregate_type="LearnerProgress",
-        payload={"userId": str(user_id)},
+        payload={
+            "userId": str(user_id),
+            "totalXp": total_xp,
+            "challengesCompleted": challenges_completed,
+            "challengesAttempted": challenges_attempted,
+            "levelsCompleted": levels_completed,
+            "categoriesCompleted": categories_completed,
+            "lastActiveChallengeId": str(last_active_challenge_id)
+            if last_active_challenge_id
+            else None,
+        },
     )
 
 

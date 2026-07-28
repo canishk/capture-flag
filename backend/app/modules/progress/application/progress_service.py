@@ -11,6 +11,24 @@ from app.modules.progress.infrastructure.repository import ProgressRepository
 from app.shared.events.dispatcher import DomainEvent, EventDispatcher, get_event_dispatcher
 
 
+async def _publish_progress_updated(
+    dispatcher: EventDispatcher, repo: ProgressRepository, user_id
+) -> None:
+    progress = await repo.get_or_create_progress(user_id)
+    summary = await repo.get_summary(user_id, total_published_challenges=0)
+    await dispatcher.publish(
+        progress_events.progress_updated(
+            user_id,
+            total_xp=progress.total_xp,
+            challenges_completed=progress.challenges_completed,
+            challenges_attempted=progress.challenges_attempted,
+            levels_completed=summary.levels_completed,
+            categories_completed=summary.categories_completed,
+            last_active_challenge_id=progress.last_active_challenge_id,
+        )
+    )
+
+
 class ProgressProjectionService:
     def __init__(
         self,
@@ -32,12 +50,10 @@ class ProgressProjectionService:
         await self._repo.increment_attempt(user_id, challenge_id)
 
     async def handle_evaluation_completed(self, event: DomainEvent) -> None:
-        if not event.payload.get("passed"):
-            await self._dispatcher.publish(
-                progress_events.progress_updated(UUID(str(event.payload["userId"])))
-            )
-            return
         user_id = UUID(str(event.payload["userId"]))
+        if not event.payload.get("passed"):
+            await _publish_progress_updated(self._dispatcher, self._repo, user_id)
+            return
         challenge_id = UUID(str(event.payload["challengeId"]))
         score = int(event.payload["score"])
         challenge = await self._challenges.get_challenge(challenge_id, include_non_published=True)
@@ -54,7 +70,7 @@ class ProgressProjectionService:
                 progress_events.challenge_completed(user_id, challenge_id, score)
             )
             await self._check_level_completion(user_id, challenge.level_id, challenge.category_id)
-        await self._dispatcher.publish(progress_events.progress_updated(user_id))
+        await _publish_progress_updated(self._dispatcher, self._repo, user_id)
 
     async def get_my_progress(self, user_id: UUID) -> LearnerProgress:
         return await self._repo.get_or_create_progress(user_id)

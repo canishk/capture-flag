@@ -13,6 +13,7 @@ from app.shared.database.dependencies import DbSession
 from app.shared.database.session import reset_database_state
 from app.shared.events.dispatcher import reset_event_dispatcher
 from app.shared.events.handlers import register_event_handlers
+from app.shared.recognition.handlers import register_recognition_handlers
 
 
 @pytest.fixture(autouse=True)
@@ -71,6 +72,7 @@ async def client(session_factory) -> AsyncGenerator[AsyncClient]:
 
     app.dependency_overrides[DbSession] = override_db
     register_event_handlers(session_factory)
+    register_recognition_handlers(session_factory)
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         yield ac

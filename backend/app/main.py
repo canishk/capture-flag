@@ -18,6 +18,7 @@ from app.shared.exceptions.handlers import (
 )
 from app.shared.logging.middleware import RequestLoggingMiddleware
 from app.shared.logging.setup import configure_logging
+from app.shared.recognition.handlers import register_recognition_handlers
 
 
 @asynccontextmanager
@@ -25,6 +26,7 @@ async def lifespan(_app: FastAPI):
     settings = get_settings()
     configure_logging(settings.log_level)
     register_event_handlers(get_session_factory())
+    register_recognition_handlers(get_session_factory())
     yield
 
 
